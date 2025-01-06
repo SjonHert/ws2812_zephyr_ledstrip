@@ -70,7 +70,7 @@ int main(void)
 	while (1) {
 		gpio_pin_set_dt(&led0, led0_state);
 		led0_state = !led0_state;
-
+		
 		memset(&pixels, 0x00, sizeof(pixels));
 		memcpy(&pixels[cursor], &colors[color], sizeof(struct led_rgb));
 		rc = led_strip_update_rgb(strip, pixels, STRIP_NUM_PIXELS);

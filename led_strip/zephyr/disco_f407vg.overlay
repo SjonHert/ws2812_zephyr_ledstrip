@@ -3,7 +3,7 @@
 #include <zephyr/dt-bindings/pinctrl/stm32-pinctrl-common.h>
 
 &spi1 {
-    pinctrl-0 = <&spi1_sck_pin &spi1_mosi_pin &spi1_miso_pin >;
+    pinctrl-0 = <&spi1_miso_pa6 &spi1_mosi_pa7 &spi1_sck_pa5>;
     pinctrl-names = "default";
     status = "okay";
     
@@ -25,19 +25,12 @@
 	};
 };
 
-&pinctrl {
-    spi1_mosi_pin: spi1_mosi_pin {
-        pinmux = <STM32_PINMUX('D', 6, AF5)>;
-        bias-disable;
-    };
-    spi1_miso_pin: spi1_miso_pin {
-        pinmux = <STM32_PINMUX('D', 7, AF5)>;
-        bias-disable;
-    };
-    spi1_sck_pin: spi1_sck_pin {
-        pinmux = <STM32_PINMUX('D', 5, AF5)>;
-        bias-disable;
-    };
+&spi1_miso_pa6 {
+    slew-rate = "very-high-speed";
+};
+
+&spi1_mosi_pa7 {
+    slew-rate = "very-high-speed";
 };
 
 / {
